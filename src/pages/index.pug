@@ -37,8 +37,19 @@ block content
   include ../pug/include/_header.pug
   +header( currentPage )
   //- メイン
-  main
-    h1 hello world
+  main.c-main
+    section.c-section._1_
+      .js-parallax-1
+        canvas(id="myCanvas1")
+    section.c-section._2_
+      .js-parallax-2
+        canvas(id="myCanvas2")
+    section.c-section._3_
+      .js-parallax-3
+        canvas(id="myCanvas3")
+    section.c-section._4_
+      .js-parallax-4
+        canvas(id="myCanvas4")
   //- フッター
   include ../pug/include/_footer.pug
   +footer( currentPage )

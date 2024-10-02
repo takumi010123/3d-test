@@ -35,3 +35,14 @@
 // ---------------
 // utils
 // ---------------
+
+.c-section{
+  // height: 50vh;
+  // margin-block-start: 50px;
+  background-color: beige;
+
+  &:nth-of-type(even){
+    background-color: #eee;
+    text-align: right;
+  }
+}
