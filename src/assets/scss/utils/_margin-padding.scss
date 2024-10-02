@@ -1,0 +1,86 @@
+@charset "UTF-8";
+// ===============================================
+// [ファイル概要] margin、padding
+// [プレフィックス] "u-"
+// ===============================================
+// 変数
+$value: 5;  // 値が増える倍数
+$j: 0;  // ループ回数（0なら0のみ作成）
+
+// ----------
+// margin
+// ----------
+@for $i from 0 through $j {
+  .u-m-#{$i * $value} {margin: #{$i * $value}px !important; }
+  .u-mt-#{$i * $value} { margin-top: #{$i * $value}px !important; }
+  .u-mr-#{$i * $value} { margin-right: #{$i * $value}px !important; }
+  .u-mb-#{$i * $value} { margin-bottom: #{$i * $value}px !important; }
+  .u-ml-#{$i * $value} { margin-left: #{$i * $value}px !important; }
+  .u-mx-#{$i * $value} { margin-right: #{$i * $value}px !important; margin-left: #{$i * $value}px !important; }
+  .u-my-#{$i * $value} { margin-top: #{$i * $value}px !important; margin-bottom: #{$i * $value}px !important; }
+}
+
+// SP
+@media (--sp) {
+  @for $i from 0 through $j {
+    .u-m-#{$i * $value}-sp { margin: #{$i * $value}px !important; }
+    .u-mt-#{$i * $value}-sp { margin-top: #{$i * $value}px !important; }
+    .u-mr-#{$i * $value}-sp { margin-right: #{$i * $value}px !important; }
+    .u-mb-#{$i * $value}-sp { margin-bottom: #{$i * $value}px !important; }
+    .u-ml-#{$i * $value}-sp { margin-left: #{$i * $value}px !important; }
+    .u-mx-#{$i * $value}-sp { margin-right: #{$i * $value}px !important; margin-left: #{$i * $value}px !important; }
+    .u-my-#{$i * $value}-sp { margin-top: #{$i * $value}px !important; margin-bottom: #{$i * $value}px !important; }
+  }
+}
+
+// PC
+@media (--pc) {
+  @for $i from 0 through $j {
+    .u-m-#{$i * $value}-pc { margin: #{$i * $value}px !important; }
+    .u-mt-#{$i * $value}-pc { margin-top: #{$i * $value}px !important; }
+    .u-mr-#{$i * $value}-pc { margin-right: #{$i * $value}px !important; }
+    .u-mb-#{$i * $value}-pc { margin-bottom: #{$i * $value}px !important; }
+    .u-ml-#{$i * $value}-pc { margin-left: #{$i * $value}px !important; }
+    .u-mx-#{$i * $value}-pc { margin-right: #{$i * $value}px !important; margin-left: #{$i * $value}px !important; }
+    .u-my-#{$i * $value}-pc { margin-top: #{$i * $value}px !important; margin-bottom: #{$i * $value}px !important; }
+  }
+}
+
+// ----------
+// padding
+// ----------
+@for $i from 0 through $j {
+  .u-p-#{$i * $value} { padding: #{$i * $value}px !important; }
+  .u-pt-#{$i * $value} { padding-top: #{$i * $value}px !important; }
+  .u-pr-#{$i * $value} { padding-right: #{$i * $value}px !important; }
+  .u-pb-#{$i * $value} { padding-bottom: #{$i * $value}px !important; }
+  .u-pl-#{$i * $value} { padding-left: #{$i * $value}px !important; }
+  .u-px-#{$i * $value} { padding-right: #{$i * $value}px !important; padding-left: #{$i * $value}px !important; }
+  .u-py-#{$i * $value} { padding-top: #{$i * $value}px !important; padding-bottom: #{$i * $value}px !important; }
+}
+
+// SP
+@media (--sp) {
+  @for $i from 0 through $j {
+    .u-p-#{$i * $value}-sp { padding: #{$i * $value}px !important; }
+    .u-pt-#{$i * $value}-sp { padding-top: #{$i * $value}px !important; }
+    .u-pr-#{$i * $value}-sp { padding-right: #{$i * $value}px !important; }
+    .u-pb-#{$i * $value}-sp { padding-bottom: #{$i * $value}px !important; }
+    .u-pl-#{$i * $value}-sp { padding-left: #{$i * $value}px !important; }
+    .u-px-#{$i * $value}-sp { padding-right: #{$i * $value}px !important; padding-left: #{$i * $value}px !important; }
+    .u-py-#{$i * $value}-sp { padding-top: #{$i * $value}px !important; padding-bottom: #{$i * $value}px !important; }
+  }
+}
+
+// PC
+@media (--pc) {
+  @for $i from 0 through $j {
+    .u-p-#{$i * $value}-pc { padding: #{$i * $value}px !important; }
+    .u-pt-#{$i * $value}-pc { padding-top: #{$i * $value}px !important; }
+    .u-pr-#{$i * $value}-pc { padding-right: #{$i * $value}px !important; }
+    .u-pb-#{$i * $value}-pc { padding-bottom: #{$i * $value}px !important; }
+    .u-pl-#{$i * $value}-pc { padding-left: #{$i * $value}px !important; }
+    .u-px-#{$i * $value}-pc { padding-right: #{$i * $value}px !important; padding-left: #{$i * $value}px !important; }
+    .u-py-#{$i * $value}-pc { padding-top: #{$i * $value}px !important; padding-bottom: #{$i * $value}px !important; }
+  }
+}

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+// ===============================================
+// [ファイル概要] 表示
+// [プレフィックス] "u-"
+// ===============================================
+.u-hidden { display: none !important; }
+.u-inline { display: inline !important; }
+.u-block { display: block !important; }
+.u-inline-block { display: inline-block !important; }
+.u-flex { display: flex !important; }
+.u-inline-flex { display: inline-flex !important; }
+
+@media (--sp) {
+  .u-hidden-sp { display: none !important; }
+}
+
+@media (--pc) {
+  .u-hidden-pc { display: none !important; }
+}

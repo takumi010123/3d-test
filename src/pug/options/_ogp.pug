@@ -1,0 +1,44 @@
+//- ====================
+//- 【概要】OGタグを設定
+//- 【引数】
+//- title: ページのタイトル
+//- type: ページのタイプ トップページに「website」、ブログに「blog」、下層ページに「article」
+//- url: ページのURL
+//- description: ページのディスクリプション
+//- ====================
+mixin ogp(title, type, url, description)
+
+  //- @OGタグ：共通
+  meta(property="og:locale" content="ja_JP")
+  meta(property="og:title" content=title)
+  meta(property="og:type" content=type)
+  meta(property="og:url" content=url)
+  meta(property="og:image" content=ogpCommonInfo.image)
+  meta(property="og:site_name"  content=ogpCommonInfo.siteName)
+  meta(property="og:description" content=description)
+
+  //- @OGタグ：facebook
+  if ogpCommonInfo.fb_appId !== ''
+    meta(property="fb:app_id" content=ogpCommonInfo.fb_appId)
+
+  if ogpCommonInfo.fb_url !== ''
+    meta(property="article:publisher" content=ogpCommonInfo.fb_url)
+
+  //- @OGタグ：twitterカード
+  if ogpCommonInfo.tw_card !== ''
+    meta(name="twitter:card" content=ogpCommonInfo.tw_card)
+
+  if ogpCommonInfo.tw_site !== ''
+    meta(name="twitter:site" content=ogpCommonInfo.tw_site)
+
+  if ogpCommonInfo.tw_title !== ''
+    meta(name="twitter:title" content=ogpCommonInfo.tw_title)
+
+  if ogpCommonInfo.tw_url !== ''
+    meta(name="twitter:url" content=ogpCommonInfo.tw_url)
+
+  if ogpCommonInfo.tw_description !== ''
+    meta(name="twitter:description" content=ogpCommonInfo.tw_description)
+
+  if ogpCommonInfo.tw_image !== ''
+    meta(name="twitter:image" content=ogpCommonInfo.tw_image)

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+// ===============================================
+// [ファイル概要] ヘッダー
+// ===============================================
+.c-header__inner {
+  width: 100%;
+  background-color: #eeeeee;
+  @media (--pc) {
+    padding: 30px 20px;
+  }
+  @media (--sp) {
+    padding: 10px;
+  }
+}
+
+.c-header__left {
+  @media (--pc) {
+    font-size: 4rem;
+    letter-spacing: 0.5em;
+  }
+  @media (--sp) {
+    font-size: 2rem;
+    letter-spacing: 0.05em;
+  }
+}

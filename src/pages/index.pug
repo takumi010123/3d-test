@@ -1,0 +1,44 @@
+//- ====================
+//- 【概要】トップページ
+//- 【詳細】
+//- ====================
+//- テンプレート
+extends ../pug/layouts/_layout.pug
+
+//- 現在のページ
+block currentPage
+  - var currentPage = 'top'
+  - var dirPath = self.htmlWebpackPlugin.options.dirPath
+  - var domain = self.htmlWebpackPlugin.options.domain
+  - console.log('variables: ', self.htmlWebpackPlugin.options.dirPath)
+  - console.log('domain', domain)
+  - console.log('dirPath', dirPath)
+  -
+    var pageInfo = {
+      url_path: ``, //- canonicalで使用
+      title: '静的テンプレート', //- ページタイトル
+      description: '静的テンプレート ディスクリプション', //- ディスクリプション 120文字以内に収めるのが良い
+      bodyClass: '',
+      ogp_title: '静的テンプレート', //- [OGP]ページのタイトル
+      ogp_type: 'website', //- [OGP]ページのタイプ トップページに「website」、ブログに「blog」、下層ページに「article」
+      ogp_url: `${domain}`, //- [OGP]ページのURL（フルパス）
+      ogp_description: '静的テンプレート ディスクリプション', //- [OGP]ページのディスクリプション
+    }
+
+block append css
+  link(rel="stylesheet" href=`${dirPath}assets/css/top.css`)
+
+block append headJS
+  script(type="text/javascript" src=`${dirPath}assets/js/top.js` defer=isSetDefer)
+
+//- HTML(body要素内)
+block content
+  //- ヘッダー
+  include ../pug/include/_header.pug
+  +header( currentPage )
+  //- メイン
+  main
+    h1 hello world
+  //- フッター
+  include ../pug/include/_footer.pug
+  +footer( currentPage )

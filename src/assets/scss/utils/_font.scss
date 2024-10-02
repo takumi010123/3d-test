@@ -1,0 +1,58 @@
+@charset "UTF-8";
+// ===============================================
+// [ファイル概要] フォント
+// [プレフィックス] "u-"
+// ===============================================
+// ----------
+// vertical-align
+// ----------
+.u-align-baseline { vertical-align: baseline !important; }
+.u-align-top { vertical-align: top !important; }
+.u-align-middle { vertical-align: middle !important; }
+.u-align-bottom { vertical-align: bottom !important; }
+.u-align-text-top { vertical-align: text-top !important; }
+.u-align-text-bottom { vertical-align: text-bottom !important; }
+
+// SP
+@media (--mobile) {
+  .u-align-baseline-sp { vertical-align: baseline !important; }
+  .u-align-top-sp { vertical-align: top !important; }
+  .u-align-middle-sp { vertical-align: middle !important; }
+  .u-align-bottom-sp { vertical-align: bottom !important; }
+  .u-align-text-top-sp { vertical-align: text-top !important; }
+  .u-align-text-bottom-sp { vertical-align: text-bottom !important; }
+}
+
+// PC
+@media (--tablet) {
+  .u-align-baseline-pc { vertical-align: baseline !important; }
+  .u-align-top-pc { vertical-align: top !important; }
+  .u-align-middle-pc { vertical-align: middle !important; }
+  .u-align-bottom-pc { vertical-align: bottom !important; }
+  .u-align-text-top-pc { vertical-align: text-top !important; }
+  .u-align-text-bottom-pc { vertical-align: text-bottom !important; }
+}
+
+// ----------
+// text-align
+// ----------
+.u-text-left { text-align: left !important; }
+.u-text-center { text-align: center !important; }
+.u-text-right { text-align: right !important; }
+.u-text-justify { text-align: justify !important; text-justify: inter-ideograph !important; }
+
+// SP
+@media (--sp) {
+  .u-text-left-sp { text-align: left !important; }
+  .u-text-center-sp { text-align: center !important; }
+  .u-text-right-sp { text-align: right !important; }
+  .u-text-justify-sp { text-align: justify !important; text-justify: inter-ideograph !important; }
+}
+
+// PC
+@media (--pc) {
+  .u-text-left-pc { text-align: left !important; }
+  .u-text-center-pc { text-align: center !important; }
+  .u-text-right-pc { text-align: right !important; }
+  .u-text-justify-pc { text-align: justify !important; text-justify: inter-ideograph !important; }
+}

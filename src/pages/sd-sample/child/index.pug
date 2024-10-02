@@ -1,0 +1,35 @@
+//- ====================
+//- 【概要】トップページ
+//- 【詳細】
+//- ====================
+//- テンプレート
+extends ../../../pug/layouts/_layout.pug
+
+//- 現在のページ
+block currentPage
+  - var currentPage = 'sd_sample'
+  - var dirPath = self.htmlWebpackPlugin.options.dirPath
+  - var domain = self.htmlWebpackPlugin.options.domain
+  -
+    var pageInfo = {
+      url_path: `sd-sample/child/`, //- canonicalで使用
+      title: 'sd-sample-child', //- ページタイトル
+      description: '', //- ディスクリプション 120文字以内に収めるのが良い
+      bodyClass: 'sd-sample-child',
+      ogp_title: 'sd-sample-child', //- [OGP]ページのタイトル
+      ogp_type: '', //- [OGP]ページのタイプ トップページに「website」、ブログに「blog」、下層ページに「article」
+      ogp_url: `${domain}`, //- [OGP]ページのURL（フルパス）
+      ogp_description: '', //- [OGP]ページのディスクリプション
+    }
+
+//- HTML(body要素内)
+block content
+  //- ヘッダー
+  include ../../../pug/include/_header.pug
+  +header( currentPage )
+  //- メイン
+  main
+    h1 hello world
+  //- フッター
+  include ../../../pug/include/_footer.pug
+  +footer( currentPage )

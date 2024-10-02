@@ -1,0 +1,49 @@
+@charset "UTF-8";
+// ==============================================
+// [ファイル概要] フォント関連
+// ・フォントウェイト
+// ・フォントサイズ
+// ・フォントファミリー
+// ・line-height
+// ・letter-spacing
+// ==============================================
+// ----------
+// フォントウェイト
+// ----------
+$FW_THIN:         100 !default; // Thin (Hairline)
+$FW_EXTRA_LIGHT:  200 !default; // Extra Light (Ultra Light)
+$FW_LIGHT:        300 !default;
+$FW_NORMAL:       400 !default; // Regular
+$FW_MEDIUM:       500 !default;
+$FW_SEMI_BOLD:    600 !default;  // Semi Bold (Demi Bold)
+$FW_BOLD:         700 !default;
+$FW_EXTRA_BOLD:   800 !default; // Extra Bold (Ultra Bold)
+$FW_BLACK:        900 !default; // Black (Heavy)
+
+// ----------
+// フォントサイズ
+// ----------
+// デフォルト Googleの推奨フォントサイズがPC/SP共に16px以上のため16pxを設定
+$FZ_DEFAULT_PC: 16 !default;  // デフォルト単位なし(PC) em設定の関数で使用
+$FZ_DEFAULT_SP: 16 !default;  // デフォルト単位なし(SP) em設定の関数で使用
+$FZ_DEFAULT_PC_REM: ($FZ_DEFAULT_PC /10) * 1rem !default;  // デフォルト(PC)
+$FZ_DEFAULT_SP_REM: ($FZ_DEFAULT_SP /10) * 1rem !default;  // デフォルト(SP)
+
+// ----------
+// line-height
+// ----------
+$LH_DEFAULT: 1 !default;  // デフォルト
+
+// ----------
+// letter-spacing
+// ----------
+$LTS_DEFAULT: 0 !default;  // デフォルト
+
+// ----------
+// フォントファミリー
+// ----------
+// ゴシック体
+$FF_GOTHIC: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", Meiryo, sans-serif !default;
+
+// 明朝体
+$FF_MINCHO: "Helvetica Neue", "Yu Mincho", YuMincho, "Hiragino Mincho Pro", "HiraMinProN-W3", serif !default;

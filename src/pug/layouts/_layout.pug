@@ -1,0 +1,124 @@
+//- ====================
+//- 【概要】html用のテンプレートファイル 第1階層
+//- 【詳細】extendで読み込んで使用する
+//- 【呼び出し先で定義する変数】
+//- title：ページタイトル
+//- description：ページのdescription
+//- ogTitle：[OGP]ページタイトル
+//- ogType：[OGP]ページのタイプ トップページに「website」、ブログに「blog」、下層ページに「article」
+//- ogUrl：[OGP]ページのURL
+//- ogUrl：[OGP]ページのディスクリプション
+//- ====================
+
+include ../options/_ogp.pug
+
+//- ====================
+//- 変数
+//- ====================
+//- テーマカラー
+- var themeColor = '#fff'
+//- OGPの共通設定
+-
+  var ogpCommonInfo = {
+    image: `${self.htmlWebpackPlugin.options.domain}images/ogp/ogp.png`, //- サムネイル画像のURL（フルパス）
+    siteName: 'OGP sitename', //- サイト名
+
+    //- FB 変数が空の場合表示しない
+    fb_appId: '', //- Facebook App ID
+    fb_url: '', //- FacebookページのURL
+
+    //- Twitter 変数が空の場合表示しない
+    tw_card: 'summary_large_image', //- Twitterカードの種類 ファイルサイズは1MB未満 縦横比が1.91:1なのでFacebook用画像と同じサイズ(summary_large_image)
+    tw_site: '', //- twitterアカウント ex.@Twitter
+    tw_title: '', //- ページのタイトル 通常と同じ内容でよければ設定不要
+    tw_url: '', //- ページのURL 通常と同じ内容でよければ設定不要
+    tw_description: '', //- ページのディスクリプション 通常と同じ内容でよければ設定不要
+    tw_image: '' //- サムネイル画像のURL
+  }
+//- defer属性の付与
+- 
+  var isSetDefer = false
+
+//- 現在のページ
+block currentPage
+  //- - var currentPage = 'top'
+
+//- ====================
+//- コンテンツ群
+//- ====================
+
+//- HTML
+doctype html
+html(lang="ja")
+  head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#")
+  
+    meta(charset="utf-8")
+    meta(name="format-detection" content="telephone=no, address=no, email=no")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0")
+
+    meta(name="description" content=`${pageInfo.description}`)
+
+    //- canonical
+    link(rel="canonical" href=`${self.htmlWebpackPlugin.options.domain}${pageInfo.url_path}`)
+
+    //- Androidで表示する色
+    meta(name="theme-color" content=`${themeColor}`)
+
+    //- OGP
+    +ogp(pageInfo.ogp_title, pageInfo.ogp_type, pageInfo.ogp_url, pageInfo.ogp_description)
+
+    //- favicon
+    link(rel="shortcut icon" href=`${dirPath}images/favicon/favicon.ico`)
+
+    //- apple-touch-icon
+    //- - var appleTouchIconDir = faviconDir
+    link(rel="apple-touch-icon" sizes="180x180" href=`${dirPath}images/favicon/apple-touch-icon-180x180.png`)
+
+    //- MVなどで先に読み込んでおく画像があれば追加
+    block preloadLink
+      //- link(rel="preload" href=`${pageInfo.publicDir}/images/mv/mv_character01@2x.png` as="image" media="(max-width: 767px)")
+      //- link(rel="preload" href=`${pageInfo.publicDir}/images/mv/mv_character01@2x.webp` as="image" media="(min-width: 768px)")
+
+    //- CSS
+    block css
+      //- preloadはlighthouse対策
+        link(rel="preload" as="font" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap")
+      link(rel="stylesheet" href=`${dirPath}assets/css/main.css`)
+
+    //- defer属性を付与したものは、基本的にheadタグの中でOK
+    block headJS
+      
+      //- 構造化データ。イベントごとなどで下記設定を行うとgoogleの検索結果に表示されるみたい。
+      //- https://tools.m-bsys.com/development_tooles/json-beautifier.php で不備がない
+      //- . 
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "Event",
+            "name": "sd 静的テンプレート",
+            "image": "https://sd-review.com/public/ogp/ogp.png",
+            "startDate": "2021-07-04T10:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+            "location": {
+              "@type": "VirtualLocation",
+              "url": ""
+            }
+          }
+        </script>
+
+      - if(self.htmlWebpackPlugin.options.env === 'local')
+        script(src=`${dirPath}assets/js/setting.js` defer=isSetDefer)
+      - if(self.htmlWebpackPlugin.options.env === 'development' || self.htmlWebpackPlugin.options.env === 'production')
+        script(src=`${dirPath}assets/js/vendor.js` defer=isSetDefer)
+      script(src=`${dirPath}assets/js/main.js` defer=isSetDefer)
+
+    title #{pageInfo.title}
+
+  body
+
+    //- コンテンツ
+    block content
+
+    //- JavaScript
+    block scripts

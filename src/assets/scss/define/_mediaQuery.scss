@@ -1,0 +1,63 @@
+@charset "UTF-8";
+// ==============================================
+// [ファイル概要] メディアクエリで使用するブレークポイント
+// ==============================================
+
+// ----------
+// ブレークポイント
+// ----------
+$BP_FULL:         1921 !default;                // 1921px以上
+$BP_WIDESCREEN:   1441 !default;                // ワイドスクリーン
+$BP_DESKTOP_MAX:  $BP_WIDESCREEN - 1 !default;  // デスクトップ オンリー
+$BP_DESKTOP:      1025 !default;                // デスクトップ
+$BP_TOUCH_MAX:    $BP_DESKTOP - 1 !default;     // タッチ用
+$BP_TABLET:       768 !default;                 // タブレット
+$BP_MOBILE:       $BP_TABLET - 1 !default;      // モバイル
+$BP_MOBILE_M:     480 !default;                 // モバイル M
+$BP_MOBILE_S:     320 !default;                 // モバイル S  - 320px
+
+@custom-media --full          (min-width: #{$BP_FULL}px);
+@custom-media --widescreen    (min-width: #{$BP_WIDESCREEN}px);
+@custom-media --desktop-only  (min-width: #{$BP_DESKTOP}px) and (max-width: #{$BP_DESKTOP_MAX}px);
+@custom-media --desktop       (min-width: #{$BP_DESKTOP}px);
+@custom-media --touch         (max-width: #{$BP_TOUCH_MAX}px);
+@custom-media --tablet        (min-width: #{$BP_TABLET}px);
+@custom-media --tablet-only   (min-width: #{$BP_TABLET}px) and (max-width: #{$BP_TOUCH_MAX}px);
+@custom-media --mobile        (max-width: #{$BP_MOBILE}px);
+@custom-media --mobile-m      (max-width: #{$BP_MOBILE_M}px);
+@custom-media --mobile-s      (max-width: #{$BP_MOBILE_S}px);
+
+@custom-media --pc (min-width: #{$BP_DESKTOP}px);
+@custom-media --sp (max-width: #{$BP_TOUCH_MAX}px);
+
+// hover動作が使えるPC
+@custom-media --hover (hover: hover) and (pointer: fine);
+
+// hoverができない端末（スマホ、タブレット）
+@custom-media --hover-none (hover: none);
+
+// ダークモード
+@custom-media --dark (prefers-color-scheme: dark);
+
+// ----------
+// [概要] safari対応
+// ----------
+@mixin mq-safari() {
+  @supports (-webkit-nbsp-mode: space) {
+    @content;
+  }
+}
+
+// ----------
+// [概要] ポートレート、ランドスケープ対応
+// [注意1] 判定条件はブラウザ縦横比が縦長ならportrait、横長ならlandscape。端末からブラウザに何かしらの「今、スマホ端末は縦ですよ」と信号があるわけではない。
+// [注意2]アプリ内でWebViewを埋め込む場合、そのサイズに気をつけなければならない。
+// ----------
+// ポートレート
+@mixin mq-portrait() {
+  @media screen and (orientation: portrait) { @content; }
+}
+// ランドスケープ
+@mixin mq-landscape() {
+  @media screen and (orientation: landscape) { @content; }
+}

@@ -1,0 +1,121 @@
+@charset "UTF-8";
+// ==============================================
+// [ファイル概要] mixin
+// ==============================================
+// --------------------------------
+// clearfix
+// --------------------------------
+@mixin cf {
+  &::after {
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+
+// --------------------------------
+// テキストを両端揃え
+// --------------------------------
+@mixin TEXT_JUSTIFY {
+  text-align: justify;
+}
+
+// --------------------------------
+// テキストインデント設定
+// --------------------------------
+@mixin text_indent($num) {
+  text-indent: $num * -1;
+  padding-left: $num;
+}
+
+// --------------------------------
+// 改行しないではみでた末尾を…にする
+// --------------------------------
+@mixin TEXT_ELLIPSIS {
+  white-space: nowrap;  // 改行禁止
+  overflow: hidden;
+  text-overflow: ellipsis; // …表示
+}
+
+// --------------------------------
+// スマートフォンでハイライトしない
+// --------------------------------
+@mixin notHighlight {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+// --------------------------------
+// テキストを選択させない（リンクボタン等で使用）
+// [参考サイト] Qiita CSSでボタンのアクセシビリティを向上させる方法
+// http://qiita.com/oreo/items/0fdf92969f3cd25a6695
+// --------------------------------
+@mixin selectNone {
+  user-select: none;
+}
+
+// --------------------------------
+// ボタン長押し時にポップアップルメニューを表示させない
+// [参考サイト] Qiita CSSでボタンのアクセシビリティを向上させる方法
+// http://qiita.com/oreo/items/0fdf92969f3cd25a6695
+// [その他] Chrome及びSafariの独自仕様である為、使用の際にはベンダープレフィックスが必要
+// --------------------------------
+@mixin popupNone {
+  -webkit-touch-callout: none;
+}
+
+// --------------------------------
+//  iOS 系端末のブラウザでスムーズにスクロールさせる
+// [使い方] overflew:scrollを設定したクラスに設定して下さい
+// --------------------------------
+@mixin ios_scroll {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
+
+// --------------------------------
+// ラジオボタンの初期化
+// --------------------------------
+@mixin radioBtnInit() {
+  vertical-align: middle;
+  border-radius: 0px;
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+}
+
+// --------------------------------
+// 三角形を作成
+// shape: top▲, bottom▼, left◀, right▶
+// --------------------------------
+@mixin setTriangle($shape, $color, $width, $height) {
+  border-style: solid;
+
+  @if $shape == top {
+    // ▲
+    border-color: transparent transparent $color transparent;
+    border-width: 0 ($width/2) ($height/2) ($width/2);
+
+  } @else if $shape == bottom {
+    // ▼
+    border-color: $color transparent transparent transparent;
+    border-width: ($height/2) ($width/2) 0 ($width/2);
+
+  } @else if $shape == left {
+    // ◀
+    border-color: transparent $color transparent transparent;
+    border-width: ($height/2) ($width/2) ($height/2) 0;
+
+  } @else {
+    // ▶
+    border-color: transparent transparent transparent $color;
+    border-width: ($height/2) 0 ($height/2) ($width/2);
+
+  }
+}
+
+// ************************
+// 以下は案件毎に追加
+// ************************
