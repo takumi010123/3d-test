@@ -1,0 +1,17 @@
+.DS_Store
+Thumbs.db
+node_modules
+node_modules/*
+*.css.map
+*.js.map
+*.log
+/dist_test
+/img_converter/results/*
+/img_converter/targets/*
+!/img_converter/targets/sample_jpg.jpg
+!/img_converter/targets/sample_png.png
+
+src/assets/images/**/*
+!.gitkeep
+
+.history
